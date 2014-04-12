@@ -23,8 +23,8 @@ What it sets up
 ---------------
 
 * Git
-* Rbenv
-* Ruby Build
+* [rbenv](https://github.com/sstephenson/rbenv)
+* [Ruby Build](https://github.com/sstephenson/ruby-build)
 * Ruby stable
 * Rails
 * Postgres
