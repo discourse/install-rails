@@ -15,7 +15,7 @@ Install
 
 ### Linux
 
-Uun the script:
+Run the script:
 
     bash <(wget -qO- https://raw.github.com/techAPJ/install-rails/master/linux)
 
@@ -35,4 +35,9 @@ It should take less than 15 minutes to install (depends on your machine).
 Credits
 -------
 
-[Thoughtbot Laptop](https://github.com/thoughtbot/laptop)!
+Inspired by [Thoughtbot Laptop](https://github.com/thoughtbot/laptop)!
+
+License
+-------
+
+Install Rails is released under the [MIT License](http://www.opensource.org/licenses/MIT).
