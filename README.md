@@ -22,13 +22,15 @@ Run the script:
 What it sets up
 ---------------
 
-* Rbenv for managing versions of the Ruby programming language
-* Ruby Build for installing Rubies
-* Ruby stable for writing general-purpose code
-* Rails gem for writing web applications
-* Postgres for storing relational data
-* Redis for storing key-value data
-* Bundler gem for managing Ruby libraries
+* Git
+* Rbenv
+* Ruby Build
+* Ruby stable
+* Rails
+* Postgres
+* SQLite
+* Redis
+* Bundler
 
 It should take less than 15 minutes to install (depends on your machine).
 
