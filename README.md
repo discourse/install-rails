@@ -25,7 +25,7 @@ What it sets up
 * Git
 * [rbenv](https://github.com/sstephenson/rbenv)
 * [ruby-build](https://github.com/sstephenson/ruby-build)
-* Ruby stable
+* Ruby (stable)
 * Rails
 * Postgres
 * SQLite
