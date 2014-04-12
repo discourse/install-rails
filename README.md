@@ -22,15 +22,15 @@ Run the script:
 What it sets up
 ---------------
 
-* Git
-* [rbenv](https://github.com/sstephenson/rbenv)
-* [ruby-build](https://github.com/sstephenson/ruby-build)
-* Ruby (stable)
-* Rails
-* Postgres
-* SQLite
-* Redis
-* Bundler
+* [Git][git_link]
+* [rbenv][rbenv_link]
+* [ruby-build][ruby_build_link]
+* [Ruby][ruby_link] (stable)
+* [Rails][rails_link]
+* [PostgreSQL][pg_link]
+* [SQLite][sqlite_link]
+* [Redis][redis_link]
+* [Bundler][bundler_link]
 
 It should take less than 15 minutes to install (depends on your machine).
 
@@ -43,3 +43,15 @@ License
 -------
 
 Install Rails is released under the [MIT License](http://www.opensource.org/licenses/MIT).
+
+
+
+[git_link]: http://git-scm.com/
+[rbenv_link]: https://github.com/sstephenson/rbenv
+[ruby_build_link]: https://github.com/sstephenson/ruby-build
+[ruby_link]: https://www.ruby-lang.org/
+[rails_link]: http://rubyonrails.org/
+[pg_link]: http://www.postgresql.org/
+[sqlite_link]: https://sqlite.org/
+[redis_link]: http://redis.io/
+[bundler_link]: http://bundler.io/
