@@ -24,7 +24,7 @@ What it sets up
 
 * Git
 * [rbenv](https://github.com/sstephenson/rbenv)
-* [Ruby Build](https://github.com/sstephenson/ruby-build)
+* [ruby-build](https://github.com/sstephenson/ruby-build)
 * Ruby stable
 * Rails
 * Postgres
