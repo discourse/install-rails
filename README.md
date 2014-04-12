@@ -22,10 +22,10 @@ Run the script:
 What it sets up
 ---------------
 
-* Rails gem for writing web applications
 * Rbenv for managing versions of the Ruby programming language
 * Ruby Build for installing Rubies
 * Ruby stable for writing general-purpose code
+* Rails gem for writing web applications
 * Postgres for storing relational data
 * Redis for storing key-value data
 * Bundler gem for managing Ruby libraries
