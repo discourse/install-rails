@@ -35,7 +35,7 @@ It should take less than 15 minutes to install (depends on your machine).
 Credits
 -------
 
-Inspired by [Thoughtbot Laptop](https://github.com/thoughtbot/laptop)!
+Inspired by [Thoughtbot Laptop](https://github.com/thoughtbot/laptop).
 
 License
 -------
