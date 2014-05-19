@@ -12,9 +12,9 @@ log_info() {
 
 if [ ! -f "$HOME/.bashrc" ]; then
   touch $HOME/.bashrc
-  printf 'source ~/.bash_profile' >> ~/.bashrc
+  printf 'source ~/.bash_profile\n' >> ~/.bashrc
 else
-  printf 'source ~/.bash_profile' >> ~/.bashrc
+  printf 'source ~/.bash_profile\n' >> ~/.bashrc
 fi
 
 if [ ! -f "$HOME/.bash_profile" ]; then
