@@ -1,0 +1,104 @@
+#!/usr/bin/env bash
+
+# Install Rails
+
+trap 'ret=$?; test $ret -ne 0 && printf "failed\n\n" >&2; exit $ret' EXIT
+
+set -e
+
+log_info() {
+  printf "\n\e[0;35m $1\e[0m\n\n"
+}
+
+if [ ! -f "$HOME/.bashrc" ]; then
+  touch $HOME/.bashrc
+  printf 'source ~/.bash_profile' >> ~/.bashrc
+else
+  printf 'source ~/.bash_profile' >> ~/.bashrc
+fi
+
+if [ ! -f "$HOME/.bash_profile" ]; then
+  touch $HOME/.bash_profile
+fi
+
+if ! command -v brew &>/dev/null; then
+  log_info "Installing Homebrew, a good OS X package manager ..."
+    ruby <(curl -fsS https://raw.githubusercontent.com/Homebrew/homebrew/go/install)
+
+  if ! grep -qs "recommended by brew doctor" ~/.bash_profile; then
+    log_info "Put Homebrew location earlier in PATH ..."
+      printf '\n# recommended by brew doctor\n' >> ~/.bash_profile
+      printf 'export PATH="/usr/local/bin:$PATH"\n' >> ~/.bash_profile
+      export PATH="/usr/local/bin:$PATH"
+  fi
+else
+  log_info "Homebrew already installed. Skipping ..."
+fi
+
+log_info "Updating Homebrew formulas ..."
+brew update
+
+log_info "Installing Postgres, a good open source relational database ..."
+  brew install postgres --no-
+
+log_info "Starting Postgres ..."
+  brew services start postgrespython
+
+log_info "Installing Redis, a good key-value database ..."
+  brew install redis
+
+  log_info "Starting Redis ..."
+    brew services start redis
+
+log_info "Installing rbenv, to change Ruby versions ..."
+  brew install rbenv
+
+  if ! grep -qs "rbenv init" ~/.bash_profile; then
+    printf '\n# load rbenv\n' >> ~/.bash_profile
+    printf 'export PATH="$HOME/.rbenv/bin:$PATH"\n' >> ~/.bash_profile
+    printf 'eval "$(rbenv init - --no-rehash)"\n' >> ~/.bash_profile
+
+    log_info "Enable shims and autocompletion ..."
+      eval "$(rbenv init -)"
+  fi
+
+  export PATH="$HOME/.rbenv/bin:$PATH"
+
+log_info "Installing rbenv-gem-rehash so the shell automatically picks up binaries after installing gems with binaries..."
+  brew install rbenv-gem-rehash
+
+log_info "Installing ruby-build, to install Rubies ..."
+  brew install ruby-build
+
+log_info "Upgrading and linking OpenSSL ..."
+  brew install openssl
+  brew link openssl --force
+
+ruby_version="$(curl -sSL http://ruby.thoughtbot.com/latest)"
+
+log_info "Installing Ruby $ruby_version ..."
+  if [ "$ruby_version" = "2.1.1" ]; then
+    curl -fsSL https://gist.github.com/mislav/a18b9d7f0dc5b9efc162.txt | rbenv install --patch 2.1.1
+  else
+    rbenv install "$ruby_version"
+  fi
+
+log_info "Setting $ruby_version as global default Ruby ..."
+  rbenv global "$ruby_version"
+  rbenv rehash
+
+log_info "Updating to latest Rubygems version ..."
+  gem update --system
+
+log_info "Installing Bundler to install project-specific Ruby gems ..."
+  gem install bundler --no-document --pre
+
+log_info "Configuring Bundler for faster, parallel gem installation ..."
+  number_of_cores=$(sysctl -n hw.ncpu)
+  bundle config --global jobs $((number_of_cores - 1))
+
+log_info "Installing Rails ..."
+  gem install rails -V
+
+log_info "Installing Phantom.js ..."
+  brew install phantomjs

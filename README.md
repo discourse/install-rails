@@ -8,7 +8,21 @@ Requirements
 
 ### Linux
 
-Currently supports Ubuntu and Linux Mint
+Currently supports Ubuntu, Linux Mint and other Debian based distributions
+
+### Mac OS X
+
+Install a C compiler:
+
+For Snow Leopard (10.6): use [OS X GCC
+Installer](https://github.com/kennethreitz/osx-gcc-installer/).
+
+For Lion (10.7) or Mountain Lion (10.8): use [Command Line Tools for
+XCode](https://developer.apple.com/downloads/index.action).
+
+For Mavericks (10.9): run `sudo xcodebuild -license` and follow the instructions
+to accept the XCode agreement.  Then run `xcode-select --install` in your
+terminal and then click "Install".
 
 Install
 -------
@@ -17,7 +31,13 @@ Install
 
 Run the script:
 
-    bash <(wget -qO- https://raw.github.com/techAPJ/install-rails/master/linux)
+    bash <(wget -qO- https://raw.githubusercontent.com/techAPJ/install-rails/master/linux)
+
+### Mac OS X
+
+Run the script:
+
+    bash <(curl -s https://raw.githubusercontent.com/techAPJ/install-rails/master/mac)
 
 What it sets up
 ---------------

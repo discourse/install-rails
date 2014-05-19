@@ -9,6 +9,10 @@ log_info() {
   printf "\n\e[0;35m $1\e[0m\n\n"
 }
 
+if [ ! -f "$HOME/.bashrc" ]; then
+  touch $HOME/.bashrc
+fi
+
 log_info "Updating Packages ..."
   sudo apt-get update
 
@@ -56,13 +60,17 @@ if [[ ! -d "$HOME/.rbenv/plugins/ruby-build" ]]; then
     git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 fi
 
-RUBY_VERSION="2.1.1"
+ruby_version="$(curl -sSL http://ruby.thoughtbot.com/latest)"
 
-log_info "Installing Ruby $RUBY_VERSION ..."
-  rbenv install $RUBY_VERSION
+log_info "Installing Ruby $ruby_version ..."
+  if [ "$ruby_version" = "2.1.1" ]; then
+    curl -fsSL https://gist.github.com/mislav/a18b9d7f0dc5b9efc162.txt | rbenv install --patch 2.1.1
+  else
+    rbenv install "$ruby_version"
+  fi
 
-log_info "Setting $RUBY_VERSION as global default Ruby ..."
-  rbenv global $RUBY_VERSION
+log_info "Setting $ruby_version as global default Ruby ..."
+  rbenv global $ruby_version
   rbenv rehash
 
 log_info "Updating to latest Rubygems version ..."
@@ -77,4 +85,3 @@ log_info "Installing Bundler ..."
 log_info "Configuring Bundler for faster, parallel gem installation ..."
   number_of_cores=$(nproc)
   bundle config --global jobs $((number_of_cores - 1))
-  
