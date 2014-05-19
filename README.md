@@ -1,7 +1,7 @@
 Install Rails
 ======
 
-Install Rails is a script to set up a Linux system for Rails development.
+Install Rails is a script to set up a Linux or Mac OS X system for Rails development.
 
 Requirements
 ------------
