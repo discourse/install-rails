@@ -8,7 +8,7 @@ Requirements
 
 ### Linux
 
-Currently supports Ubuntu, Linux Mint and other Debian based distributions
+Currently supports Ubuntu, Linux Mint and other Debian based distributions.
 
 ### Mac OS X
 
