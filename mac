@@ -47,8 +47,8 @@ log_info "Starting Postgres ..."
 log_info "Installing Redis, a good key-value database ..."
   brew install redis
 
-  log_info "Starting Redis ..."
-    brew services start redis
+log_info "Starting Redis ..."
+  brew services start redis
 
 log_info "Installing rbenv, to change Ruby versions ..."
   brew install rbenv
