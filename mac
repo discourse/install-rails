@@ -42,7 +42,7 @@ log_info "Installing Postgres, a good open source relational database ..."
   brew install postgres --no-
 
 log_info "Starting Postgres ..."
-  brew services start postgrespython
+  brew install postgres --no-python
 
 log_info "Installing Redis, a good key-value database ..."
   brew install redis
