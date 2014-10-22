@@ -23,7 +23,6 @@ fi
 
 if ! command -v brew &>/dev/null; then
   log_info "Installing Homebrew, a good OS X package manager ..."
-#   ruby <(curl -fsS https://raw.githubusercontent.com/Homebrew/homebrew/go/install)
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
   if ! grep -qs "recommended by brew doctor" ~/.bash_profile; then
@@ -37,7 +36,10 @@ else
 fi
 
 log_info "Updating Homebrew formulas ..."
-brew update
+  brew update
+
+echo "Installing Homebrew Services"
+  brew tap gapple/services
 
 log_info "Installing Postgres, a good open source relational database ..."
   brew install postgres --no-python
