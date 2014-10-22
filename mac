@@ -38,7 +38,7 @@ fi
 log_info "Updating Homebrew formulas ..."
   brew update
 
-echo "Installing Homebrew Services"
+log_info "Installing Homebrew Services"
   brew tap gapple/services
 
 log_info "Installing Postgres, a good open source relational database ..."
