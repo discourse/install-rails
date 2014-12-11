@@ -42,7 +42,7 @@ log_info "Installing ImageMagick ..."
 
 if [[ ! -d "$HOME/.rbenv" ]]; then
   log_info "Installing rbenv ..."
-    git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
+    git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 
     if ! grep -qs "rbenv init" ~/.bashrc; then
       printf 'export PATH="$HOME/.rbenv/bin:$PATH"\n' >> ~/.bashrc
@@ -60,7 +60,7 @@ fi
 
 if [[ ! -d "$HOME/.rbenv/plugins/ruby-build" ]]; then
   log_info "Installing ruby-build, to install Rubies ..."
-    git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+    git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 fi
 
 ruby_version="$(curl -sSL http://ruby.thoughtbot.com/latest)"
