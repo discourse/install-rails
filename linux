@@ -19,9 +19,6 @@ log_info "Updating Packages ..."
 log_info "Installing Git ..."
   sudo apt-get -y install git
 
-log_info "Installing base ruby build dependencies ..."
-  sudo apt-get -y build-dep ruby1.9.3
-
 log_info "Installing libraries for common gem dependencies ..."
   sudo apt-get -y install libxslt1-dev libcurl4-openssl-dev libksba8 libksba-dev libqtwebkit-dev libreadline-dev
 
@@ -36,9 +33,6 @@ log_info "Installing Redis ..."
 
 log_info "Installing curl ..."
   sudo apt-get -y install curl
-
-log_info "Installing ImageMagick ..."
-  sudo apt-get -y install imagemagick
 
 if [[ ! -d "$HOME/.rbenv" ]]; then
   log_info "Installing rbenv ..."
@@ -63,14 +57,10 @@ if [[ ! -d "$HOME/.rbenv/plugins/ruby-build" ]]; then
     git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 fi
 
-ruby_version="$(curl -sSL http://ruby.thoughtbot.com/latest)"
+ruby_version="2.2.2"
 
 log_info "Installing Ruby $ruby_version ..."
-  if [ "$ruby_version" = "2.1.1" ]; then
-    curl -fsSL https://gist.github.com/mislav/a18b9d7f0dc5b9efc162.txt | rbenv install --patch 2.1.1
-  else
-    rbenv install "$ruby_version"
-  fi
+  rbenv install "$ruby_version"
 
 log_info "Setting $ruby_version as global default Ruby ..."
   rbenv global $ruby_version
@@ -84,7 +74,3 @@ log_info "Installing Rails ..."
 
 log_info "Installing Bundler ..."
   gem install bundler --no-document --pre
-
-log_info "Configuring Bundler for faster, parallel gem installation ..."
-  number_of_cores=$(nproc)
-  bundle config --global jobs $((number_of_cores - 1))
