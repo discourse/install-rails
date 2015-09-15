@@ -33,6 +33,9 @@ log_info "Installing Redis ..."
 
 log_info "Installing curl ..."
   sudo apt-get -y install curl
+  
+log_info "Installing ImageMagick ..."
+  sudo apt-get -y install imagemagick
 
 if [[ ! -d "$HOME/.rbenv" ]]; then
   log_info "Installing rbenv ..."
