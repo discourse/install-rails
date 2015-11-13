@@ -19,7 +19,7 @@ log_info "Updating Packages ..."
 log_info "Installing Git ..."
   sudo apt-get -y install git
   
-log_info "Installing base ruby build dependencies ..."
+log_info "Installing build essentials ..."
   sudo apt-get -y install build-essential
 
 log_info "Installing libraries for common gem dependencies ..."
