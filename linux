@@ -20,7 +20,7 @@ log_info "Installing Git ..."
   sudo apt-get -y install git
   
 log_info "Installing base ruby build dependencies ..."
-  sudo apt-get -y install build-essentials
+  sudo apt-get -y install build-essential
 
 log_info "Installing libraries for common gem dependencies ..."
   sudo apt-get -y install libxslt1-dev libcurl4-openssl-dev libksba8 libksba-dev libqtwebkit-dev libreadline-dev
