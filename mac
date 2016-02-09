@@ -70,9 +70,6 @@ log_info "Installing rbenv, to change Ruby versions ..."
 
   export PATH="$HOME/.rbenv/bin:$PATH"
 
-log_info "Installing rbenv-gem-rehash so the shell automatically picks up binaries after installing gems with binaries..."
-  brew install rbenv-gem-rehash
-
 log_info "Installing ruby-build, to install Rubies ..."
   brew install ruby-build
 
@@ -87,7 +84,6 @@ log_info "Installing Ruby $ruby_version ..."
 
 log_info "Setting $ruby_version as global default Ruby ..."
   rbenv global "$ruby_version"
-  rbenv rehash
 
 log_info "Updating to latest Rubygems version ..."
   gem update --system
