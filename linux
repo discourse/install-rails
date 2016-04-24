@@ -83,3 +83,7 @@ log_info "Installing Rails ..."
 
 log_info "Installing Bundler ..."
   gem install bundler --no-document --pre
+  
+log_info "Installing Mailcatcher ..."
+  gem install mailcatcher
+  
