@@ -40,6 +40,9 @@ log_info "Installing curl ..."
 log_info "Installing ImageMagick ..."
   sudo apt-get -y install imagemagick
 
+log_info "Installing image utilities ..."  
+  sudo apt-get install optipng gifsicle jpegoptim libjpeg-progs
+
 if [[ ! -d "$HOME/.rbenv" ]]; then
   log_info "Installing rbenv ..."
     git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
@@ -63,7 +66,7 @@ if [[ ! -d "$HOME/.rbenv/plugins/ruby-build" ]]; then
     git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 fi
 
-ruby_version="2.2.3"
+ruby_version="2.3.0"
 
 log_info "Installing Ruby $ruby_version ..."
   rbenv install "$ruby_version"
