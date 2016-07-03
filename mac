@@ -77,6 +77,9 @@ log_info "Upgrading and linking OpenSSL ..."
   brew install openssl
   brew link openssl --force
 
+log_info "Installing image libs ..."
+  brew install advancecomp gifsicle jhead jpegoptim jpeg optipng pngcrush pngquant
+
 ruby_version="2.2.3"
 
 log_info "Installing Ruby $ruby_version ..."
