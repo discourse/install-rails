@@ -80,7 +80,7 @@ log_info "Upgrading and linking OpenSSL ..."
 log_info "Installing image libs ..."
   brew install advancecomp gifsicle jhead jpegoptim jpeg optipng pngcrush pngquant
 
-ruby_version="2.2.3"
+ruby_version="2.3.0"
 
 log_info "Installing Ruby $ruby_version ..."
   rbenv install "$ruby_version"
