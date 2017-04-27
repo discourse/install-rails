@@ -18,12 +18,12 @@ log_info "Updating Packages ..."
 
 log_info "Installing Git ..."
   sudo apt-get -y install git
-  
+
 log_info "Installing build essentials ..."
   sudo apt-get -y install build-essential
 
 log_info "Installing libraries for common gem dependencies ..."
-  sudo apt-get -y install libxslt1-dev libcurl4-openssl-dev libksba8 libksba-dev libqtwebkit-dev libreadline-dev
+  sudo apt-get -y install libxslt1-dev libcurl4-openssl-dev libksba8 libksba-dev libqtwebkit-dev libreadline-dev libssl-dev zlib1g-dev libsnappy-dev
 
 log_info "Installing sqlite3 ..."
  sudo apt-get -y install libsqlite3-dev sqlite3
@@ -36,16 +36,16 @@ log_info "Installing Redis ..."
 
 log_info "Installing curl ..."
   sudo apt-get -y install curl
-  
+
 log_info "Installing ImageMagick ..."
   sudo apt-get -y install imagemagick
 
-log_info "Installing image utilities ..."  
+log_info "Installing image utilities ..."
   sudo apt-get -y install optipng gifsicle jpegoptim libjpeg-progs
 
 if [[ ! -d "$HOME/.rbenv" ]]; then
   log_info "Installing rbenv ..."
-    git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+    git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 
     if ! grep -qs "rbenv init" ~/.bashrc; then
       printf 'export PATH="$HOME/.rbenv/bin:$PATH"\n' >> ~/.bashrc
@@ -56,17 +56,12 @@ if [[ ! -d "$HOME/.rbenv" ]]; then
     eval "$(rbenv init -)"
 fi
 
-if [[ ! -d "$HOME/.rbenv/plugins/rbenv-gem-rehash" ]]; then
-  log_info "Installing rbenv-gem-rehash so the shell automatically picks up binaries after installing gems with binaries..."
-    git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash
-fi
-
 if [[ ! -d "$HOME/.rbenv/plugins/ruby-build" ]]; then
   log_info "Installing ruby-build, to install Rubies ..."
-    git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+    git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 fi
 
-ruby_version="2.3.0"
+ruby_version="2.3.4"
 
 log_info "Installing Ruby $ruby_version ..."
   rbenv install "$ruby_version"
@@ -83,7 +78,7 @@ log_info "Installing Rails ..."
 
 log_info "Installing Bundler ..."
   gem install bundler --no-document --pre
-  
+
 log_info "Installing Mailcatcher ..."
   gem install mailcatcher
-  
+
