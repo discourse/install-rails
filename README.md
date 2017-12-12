@@ -51,6 +51,7 @@ What it sets up
 * [SQLite][sqlite_link]
 * [Redis][redis_link]
 * [Bundler][bundler_link]
+* [MailCatcher][mailcatcher_link] (Linux script only)
 * [ImageMagick][imagemagick_link]
 
 It should take less than 15 minutes to install (depends on your machine).
@@ -76,4 +77,5 @@ Install Rails is released under the [MIT License](http://www.opensource.org/lice
 [sqlite_link]: https://sqlite.org/
 [redis_link]: http://redis.io/
 [bundler_link]: http://bundler.io/
+[mailcatcher_link]: http://mailcatcher.me/
 [imagemagick_link]: http://www.imagemagick.org/
