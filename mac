@@ -101,6 +101,3 @@ log_info "Configuring Bundler for faster, parallel gem installation ..."
 
 log_info "Installing Rails ..."
   gem install rails -V
-
-log_info "Installing Phantom.js ..."
-  brew install phantomjs
