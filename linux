@@ -29,7 +29,7 @@ log_info "Installing sqlite3 ..."
  sudo apt-get -y install libsqlite3-dev sqlite3
 
 log_info "Installing Postgres ..."
-  sudo apt-get -y install postgresql postgresql-server-dev-all postgresql-contrib
+  sudo apt-get -y install postgresql postgresql-server-dev-all postgresql-contrib libpq-dev
 
 log_info "Installing Redis ..."
   sudo apt-get -y install redis-server
