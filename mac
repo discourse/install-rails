@@ -54,8 +54,7 @@ log_info "Starting Redis ..."
   brew services start redis
 
 log_info "Installing and linking ImageMagick, to crop and resize images ..."
-  brew install imagemagick@6
-  brew link imagemagick@6 --force
+  brew install imagemagick
 
 log_info "Installing rbenv, to change Ruby versions ..."
   brew install rbenv
