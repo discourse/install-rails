@@ -42,7 +42,7 @@ log_info "Installing Homebrew Services"
   brew tap gapple/services
 
 log_info "Installing Postgres, a good open source relational database ..."
-  brew install postgres --no-python
+  brew install postgres
 
 log_info "Starting Postgres ..."
   brew services start postgres
