@@ -75,10 +75,10 @@ log_info "Updating to latest Rubygems version ..."
   gem update --system
 
 log_info "Installing Rails ..."
-  gem install rails -V
+  gem install rails
 
 log_info "Installing Bundler ..."
-  gem install bundler --no-document --pre
+  gem install bundler
 
 log_info "Installing Mailcatcher ..."
   gem install mailcatcher
