@@ -33,6 +33,9 @@ Install
 Run the script:
 
     bash <(wget -qO- https://raw.githubusercontent.com/techAPJ/install-rails/master/linux)
+Run the script for archlinux or manjaro:
+
+    bash <(wget -qO- https://raw.githubusercontent.com/techAPJ/install-rails/master/linux_arch)
 
 ### Mac OS X
 
