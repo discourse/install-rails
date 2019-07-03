@@ -9,6 +9,7 @@ Requirements
 ### Linux
 
 Currently supports Ubuntu, Linux Mint and other Debian based distributions.
+use linux_arch if you use arch or manjaro
 
 ### Mac OS X
 
