@@ -81,5 +81,5 @@ log_info "Installing Mailcatcher ..."
   gem install mailcatcher
 
 log_info "Installing Node.js ..."
-  sudo pacman -S --noconfirm nodejs
+  sudo pacman -S --noconfirm nodejs npm
   sudo npm install -g svgo
