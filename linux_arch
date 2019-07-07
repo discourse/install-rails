@@ -19,17 +19,17 @@ log_info "Updating Packages ..."
 log_info "Installing Git ..."
   sudo pacman -S --noconfirm git
 
-log_info "Installing libraries for common gem dependencies ..."
-  sudo pacman -S --noconfirm libxslt1-dev libcurl4-openssl-dev libksba8 libksba-dev libqtwebkit-dev libreadline-dev libssl-dev zlib1g-dev libsnappy-dev
+#log_info "Installing libraries for common gem dependencies ..."
+#  sudo pacman -S --noconfirm libxslt1-dev libcurl4-openssl-dev libksba8 libksba-dev libqtwebkit-dev libreadline-dev libssl-dev zlib1g-dev libsnappy-dev
 
 log_info "Installing sqlite3 ..."
- sudo pacman -S --noconfirm libsqlite3-dev sqlite3
+ sudo pacman -S --noconfirm sqlite3
 
 log_info "Installing Postgres ..."
-  sudo pacman -S --noconfirm postgresql postgresql-server-dev-all postgresql-contrib libpq-dev
+  sudo pacman -S --noconfirm postgresql libpqxx
 
 log_info "Installing Redis ..."
-  sudo pacman -S --noconfirm redis-server
+  sudo pacman -S --noconfirm redis
 
 log_info "Installing curl ..."
   sudo pacman -S --noconfirm curl
@@ -38,7 +38,7 @@ log_info "Installing ImageMagick ..."
   sudo pacman -S --noconfirm imagemagick
 
 log_info "Installing image utilities ..."
-  sudo pacman -S --noconfirm advancecomp gifsicle jpegoptim libjpeg-progs optipng pngcrush pngquant
+  sudo pacman -S --noconfirm advancecomp gifsicle jpegoptim libjpeg-turbo optipng pngcrush pngquant
   sudo pacman -S --noconfirm jhead
 
 if [[ ! -d "$HOME/.rbenv" ]]; then
@@ -81,6 +81,5 @@ log_info "Installing Mailcatcher ..."
   gem install mailcatcher
 
 log_info "Installing Node.js ..."
-  curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
   sudo pacman -S --noconfirm nodejs
   sudo npm install -g svgo
