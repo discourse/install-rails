@@ -19,9 +19,6 @@ log_info "Updating Packages ..."
 log_info "Installing Git ..."
   sudo pacman -S --noconfirm git
 
-log_info "Installing build essentials ..."
-  sudo pacman -S --noconfirm build-essential
-
 log_info "Installing libraries for common gem dependencies ..."
   sudo pacman -S --noconfirm libxslt1-dev libcurl4-openssl-dev libksba8 libksba-dev libqtwebkit-dev libreadline-dev libssl-dev zlib1g-dev libsnappy-dev
 
