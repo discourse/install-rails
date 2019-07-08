@@ -35,7 +35,7 @@ Run the script:
     bash <(wget -qO- https://raw.githubusercontent.com/techAPJ/install-rails/master/linux)
 Run the script for archlinux or manjaro:
 
-    bash <(wget -qO- https://raw.githubusercontent.com/techAPJ/install-rails/master/linux_arch)
+    bash <(wget -qO- https://raw.githubusercontent.com/techAPJ/spirobel/master/linux_arch)
     be sure to start redis and postgresql before you run discourse. (see the last two lines of the script)
 
 ### Mac OS X
