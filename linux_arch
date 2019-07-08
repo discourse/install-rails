@@ -83,3 +83,7 @@ log_info "Installing Mailcatcher ..."
 log_info "Installing Node.js ..."
   sudo pacman -S --noconfirm nodejs npm
   sudo npm install -g svgo
+log_info "Starting postgres"
+  sudo -u postgres initdb -D /var/lib/postgres/data
+  sudo systemctl start postgresql
+  sudo systemctl start redis
