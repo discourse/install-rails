@@ -62,7 +62,7 @@ if [[ ! -d "$HOME/.rbenv/plugins/ruby-build" ]]; then
     git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 fi
 
-ruby_version="2.6.2"
+ruby_version="2.7.0"
 
 log_info "Installing Ruby $ruby_version ..."
   rbenv install "$ruby_version"
