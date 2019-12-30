@@ -1,36 +1,39 @@
 #!/usr/bin/env bash
-
 # Install Rails
 
 trap 'ret=$?; test $ret -ne 0 && printf "failed\n\n" >&2; exit $ret' EXIT
-
 set -e
+
+create_zshrc_and_set_it_as_shell_file() {
+  if [ ! -f "$HOME/.zshrc" ]; then
+    touch "$HOME/.zshrc"
+  fi
+  shell_file="$HOME/.zshrc"
+}
+
+create_bashrc_and_set_it_as_shell_file() {
+  if [ ! -f "$HOME/.bashrc" ]; then
+    touch "$HOME/.bashrc"
+  fi
+  shell_file="$HOME/.bashrc"
+}
+
+case "$SHELL" in
+  */zsh) :
+    create_zshrc_and_set_it_as_shell_file
+  ;;
+  *)
+    create_bashrc_and_set_it_as_shell_file
+  ;;
+esac
 
 log_info() {
   printf "\n\e[0;35m $1\e[0m\n\n"
 }
 
-if [ ! -f "$HOME/.bashrc" ]; then
-  touch $HOME/.bashrc
-  printf 'source ~/.bash_profile\n' >> ~/.bashrc
-else
-  printf 'source ~/.bash_profile\n' >> ~/.bashrc
-fi
-
-if [ ! -f "$HOME/.bash_profile" ]; then
-  touch $HOME/.bash_profile
-fi
-
 if ! command -v brew &>/dev/null; then
   log_info "Installing Homebrew, a good OS X package manager ..."
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-  if ! grep -qs "recommended by brew doctor" ~/.bash_profile; then
-    log_info "Put Homebrew location earlier in PATH ..."
-      printf '\n# recommended by brew doctor\n' >> ~/.bash_profile
-      printf 'export PATH="/usr/local/bin:$PATH"\n' >> ~/.bash_profile
-      export PATH="/usr/local/bin:$PATH"
-  fi
 else
   log_info "Homebrew already installed. Skipping ..."
 fi
@@ -59,10 +62,10 @@ log_info "Installing and linking ImageMagick, to crop and resize images ..."
 log_info "Installing rbenv, to change Ruby versions ..."
   brew install rbenv
 
-  if ! grep -qs "rbenv init" ~/.bash_profile; then
-    printf '\n# load rbenv\n' >> ~/.bash_profile
-    printf 'export PATH="$HOME/.rbenv/bin:$PATH"\n' >> ~/.bash_profile
-    printf 'eval "$(rbenv init - --no-rehash)"\n' >> ~/.bash_profile
+  if ! grep -qs "rbenv init" $shell_file; then
+    printf '\n# load rbenv\n' >> $shell_file
+    printf 'export PATH="$HOME/.rbenv/bin:$PATH"\n' >> $shell_file
+    printf 'eval "$(rbenv init - --no-rehash)"\n' >> $shell_file
 
     log_info "Enable shims and autocompletion ..."
       eval "$(rbenv init -)"
