@@ -106,3 +106,6 @@ log_info "Installing Rails ..."
 
 log_info "Installing Mailcatcher ..."
   gem install mailcatcher
+
+log_info "Installing Yarn ..."
+  brew install yarn
