@@ -62,7 +62,7 @@ if [[ ! -d "$HOME/.rbenv/plugins/ruby-build" ]]; then
     git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 fi
 
-ruby_version="2.6.5"
+ruby_version="2.7.1"
 
 log_info "Installing Ruby $ruby_version ..."
   rbenv install "$ruby_version"
@@ -84,7 +84,7 @@ log_info "Installing Mailcatcher ..."
   gem install mailcatcher
 
 log_info "Installing Node.js ..."
-  curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+  curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
   sudo apt-get install -y nodejs
   sudo npm install -g svgo
   sudo npm install -g yarn
