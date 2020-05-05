@@ -1,4 +1,8 @@
-The nodejs 10.x branch has been merged with techAPJ's repo.So it is deleted now.Please view it in [https://github.com/techAPJ/install-rails](https://github.com/techAPJ/install-rails)
+Notice
+======
+The nodejs 10.x branch has been merged with techAPJ's repo.So it is deleted now.Please view it in [https://github.com/techAPJ/install-rails](https://github.com/techAPJ/install-rails)    clean at``2020.5.6``
+
+The rubyupdate -> 2.7.1 branch has been merged with techAPJ's repo.So it is deleted now.Please view it in [https://github.com/techAPJ/install-rails](https://github.com/techAPJ/install-rails)    clean at``2020.5.20``
 
 Install Rails
 ======
