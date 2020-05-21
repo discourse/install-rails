@@ -1,8 +1,8 @@
-Notice
+<!--Notice
 ======
 <!-- format:The ... branch has been merged with techAPJ's repo.So it is deleted now.Please view it in [https://github.com/techAPJ/install-rails](https://github.com/techAPJ/install-rails)    (will clean at``...``)
-  -->
-None now
+  --
+None now-->
 
 Install Rails
 ======
