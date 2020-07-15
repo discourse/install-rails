@@ -38,7 +38,11 @@ log_info "Installing curl ..."
   sudo apt-get -y install curl
 
 log_info "Installing ImageMagick ..."
-  sudo apt-get -y install imagemagick
+  sudo apt-get install libtool
+  wget https://raw.githubusercontent.com/discourse/discourse_docker/48ea79fb1792fbc84ab10939459d5bf25bc0332c/image/base/install-imagemagick
+  chmod +x install-imagemagick
+  sudo ./install-imagemagick
+#  sudo apt-get -y install imagemagick
 
 log_info "Installing image utilities ..."
   sudo apt-get -y install advancecomp gifsicle jpegoptim libjpeg-progs optipng pngcrush pngquant
