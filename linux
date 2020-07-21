@@ -23,7 +23,7 @@ log_info "Installing build essentials ..."
   sudo apt-get -y install build-essential
 
 log_info "Installing libraries for common gem dependencies ..."
-  sudo apt-get -y install libxslt1-dev libcurl4-openssl-dev libksba8 libksba-dev libqtwebkit-dev libreadline-dev libssl-dev zlib1g-dev libsnappy-dev
+  sudo apt-get -y install libxslt1-dev libcurl4-openssl-dev libksba8 libksba-dev libreadline-dev libssl-dev zlib1g-dev libsnappy-dev
 
 log_info "Installing sqlite3 ..."
  sudo apt-get -y install libsqlite3-dev sqlite3
