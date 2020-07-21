@@ -38,7 +38,10 @@ log_info "Installing curl ..."
   sudo apt-get -y install curl
 
 log_info "Installing ImageMagick ..."
-  sudo apt-get -y install imagemagick
+  sudo apt-get -y install libtool
+  wget https://raw.githubusercontent.com/discourse/discourse_docker/master/image/base/install-imagemagick
+  chmod +x install-imagemagick
+  sudo ./install-imagemagick
 
 log_info "Installing image utilities ..."
   sudo apt-get -y install advancecomp gifsicle jpegoptim libjpeg-progs optipng pngcrush pngquant
@@ -88,4 +91,3 @@ log_info "Installing Node.js 10 ..."
   sudo apt-get install -y nodejs
   sudo npm install -g svgo
   sudo npm install -g yarn
-
