@@ -21,13 +21,13 @@ Install
 
 Run the script:
 
-    bash <(wget -qO- https://raw.githubusercontent.com/techAPJ/install-rails/master/linux)
+    bash <(wget -qO- https://raw.githubusercontent.com/sysdl132/install-rails/master/linux)
 
 ### Mac OS X
 
 Run the script:
 
-    bash <(curl -s https://raw.githubusercontent.com/techAPJ/install-rails/master/mac)
+    bash <(curl -s https://raw.githubusercontent.com/sysdl132/install-rails/master/mac)
 
 What it sets up
 ---------------
