@@ -39,8 +39,8 @@ log_info "Installing curl ..."
 
 log_info "Installing ImageMagick ..."
   sudo apt-get -y install libtool
-  wget https://raw.githubusercontent.com/discourse/discourse_docker/master/image/base/install-imagemagick
-  chmod +x install-imagemagick
+  sudo wget https://raw.githubusercontent.com/discourse/discourse_docker/master/image/base/install-imagemagick
+  sudo chmod +x install-imagemagick
   sudo ./install-imagemagick
 
 log_info "Installing image utilities ..."
