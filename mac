@@ -107,8 +107,8 @@ log_info "Configuring Bundler for faster, parallel gem installation ..."
 log_info "Installing Rails ..."
   gem install rails
 
-log_info "Installing Mailcatcher ..."
-  gem install mailcatcher
+log_info "Installing MailHog ..."
+  brew install mailhog
 
 log_info "Installing Yarn ..."
   brew install yarn
