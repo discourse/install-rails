@@ -32,6 +32,7 @@ log_info "Installing Postgres ..."
   sudo apt-get -y install postgresql postgresql-server-dev-all postgresql-contrib libpq-dev
 
 log_info "Installing Redis ..."
+  sudo add-apt-repository ppa:redislabs/redis -y
   sudo apt-get -y install redis-server
 
 log_info "Installing curl ..."
