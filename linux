@@ -31,14 +31,14 @@ log_info "Installing sqlite3 ..."
 log_info "Installing Postgres ..."
   sudo apt-get -y install postgresql postgresql-server-dev-all postgresql-contrib libpq-dev
 
+log_info "Installing curl ..."
+  sudo apt-get -y install curl
+
 log_info "Installing Redis ..."
   curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
   echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
   sudo apt-get update
   sudo apt-get -y install redis
-
-log_info "Installing curl ..."
-  sudo apt-get -y install curl
 
 log_info "Installing ImageMagick ..."
   sudo apt-get -y install libtool
