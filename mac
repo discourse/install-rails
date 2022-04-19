@@ -77,8 +77,8 @@ log_info "Installing ruby-build, to install Rubies ..."
   brew install ruby-build
 
 log_info "Upgrading and linking OpenSSL ..."
-  brew install openssl
-  brew link openssl --force
+  brew install openssl@1.1
+  brew link openssl@1.1 --force
 
 log_info "Installing image libs ..."
   brew install advancecomp jhead jpegoptim jpeg optipng oxipng pngcrush pngquant
