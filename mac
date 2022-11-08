@@ -54,7 +54,7 @@ log_info "Installing Redis, a good key-value database ..."
   brew install redis
 
 log_info "Starting Redis ..."
-  brew services start redis
+  brew services restart redis
 
 log_info "Installing and linking ImageMagick, to crop and resize images ..."
   brew install imagemagick
