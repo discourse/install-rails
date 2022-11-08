@@ -48,7 +48,7 @@ log_info "Installing Postgres, a good open source relational database ..."
   brew install postgresql@14
 
 log_info "Starting Postgres ..."
-  brew services start postgresql@14
+  brew services restart postgresql@14
 
 log_info "Installing Redis, a good key-value database ..."
   brew install redis
