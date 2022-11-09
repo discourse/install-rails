@@ -48,13 +48,13 @@ log_info "Installing Postgres, a good open source relational database ..."
   brew install postgresql@14
 
 log_info "Starting Postgres ..."
-  brew services start postgresql@14
+  brew services restart postgresql@14
 
 log_info "Installing Redis, a good key-value database ..."
   brew install redis
 
 log_info "Starting Redis ..."
-  brew services start redis
+  brew services restart redis
 
 log_info "Installing and linking ImageMagick, to crop and resize images ..."
   brew install imagemagick
@@ -89,7 +89,7 @@ log_info "Installing coreutils ..."
 ruby_version="2.7.3"
 
 log_info "Installing Ruby $ruby_version ..."
-  rbenv install "$ruby_version"
+  rbenv install -s "$ruby_version"
 
 log_info "Setting $ruby_version as global default Ruby ..."
   rbenv global "$ruby_version"
