@@ -86,7 +86,7 @@ log_info "Installing image libs ..."
 log_info "Installing coreutils ..."
   brew install coreutils
 
-ruby_version="2.7.3"
+ruby_version="2.7.6"
 
 log_info "Installing Ruby $ruby_version ..."
   rbenv install "$ruby_version"
