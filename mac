@@ -45,10 +45,10 @@ log_info "Installing Homebrew Services"
   brew tap homebrew/services
 
 log_info "Installing Postgres, a good open source relational database ..."
-  brew install postgresql@14
+  brew install postgresql@13
 
 log_info "Starting Postgres ..."
-  brew services start postgresql@14
+  brew services start postgresql@13
 
 log_info "Installing Redis, a good key-value database ..."
   brew install redis
