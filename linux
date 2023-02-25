@@ -44,7 +44,7 @@ log_info "Installing ImageMagick ..."
   sudo apt-get -y install libtool
   wget https://raw.githubusercontent.com/discourse/discourse_docker/master/image/base/install-imagemagick
   chmod +x install-imagemagick
-  sudo ./install-imagemagick
+  sudo -E ./install-imagemagick
 
 log_info "Installing image utilities ..."
   sudo apt-get -y install advancecomp gifsicle jpegoptim libjpeg-progs optipng pngcrush pngquant
