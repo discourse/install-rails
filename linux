@@ -42,9 +42,14 @@ log_info "Installing Redis ..."
 
 log_info "Installing ImageMagick ..."
   sudo apt-get -y install libtool
-  wget https://raw.githubusercontent.com/discourse/discourse_docker/main/image/base/install-imagemagick
-  chmod +x install-imagemagick
-  sudo ./install-imagemagick
+
+  # https://imagemagick.org/script/install-source.php
+  git clone https://github.com/ImageMagick/ImageMagick.git /tmp/ImageMagick-7.1.1
+  (cd /tmp/ImageMagick-7.1.1 && \
+    ./configure && \
+    make && \
+    sudo make install && \
+    sudo ldconfig /usr/local/lib)
 
 log_info "Installing image utilities ..."
   sudo apt-get -y install advancecomp gifsicle jpegoptim libjpeg-progs optipng pngcrush pngquant
