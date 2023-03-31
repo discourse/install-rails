@@ -4,6 +4,10 @@
 
 trap 'ret=$?; test $ret -ne 0 && printf "failed\n\n" >&2; exit $ret' EXIT
 
+# Ubuntu 22+ will prompt to restart services without these set
+export NEEDRESTART_MODE=a
+export DEBIAN_FRONTEND=noninteractive
+
 set -e
 log_info() {
   printf "\n\e[0;35m $1\e[0m\n\n"
@@ -14,41 +18,41 @@ if [ ! -f "$HOME/.bashrc" ]; then
 fi
 
 log_info "Updating Packages ..."
-  sudo apt-get update
+  sudo -E apt-get update
 
 log_info "Installing Git ..."
-  sudo apt-get -y install git
+  sudo -E apt-get -y install git
 
 log_info "Installing build essentials ..."
-  sudo apt-get -y install build-essential
+  sudo -E apt-get -y install build-essential
 
 log_info "Installing libraries for common gem dependencies ..."
-  sudo apt-get -y install libxslt1-dev libcurl4-openssl-dev libksba8 libksba-dev libreadline-dev libssl-dev zlib1g-dev libsnappy-dev
+  sudo -E apt-get -y install libxslt1-dev libcurl4-openssl-dev libksba8 libksba-dev libreadline-dev libssl-dev zlib1g-dev libsnappy-dev
 
 log_info "Installing sqlite3 ..."
- sudo apt-get -y install libsqlite3-dev sqlite3
+ sudo -E apt-get -y install libsqlite3-dev sqlite3
 
 log_info "Installing Postgres ..."
-  sudo apt-get -y install postgresql postgresql-server-dev-all postgresql-contrib libpq-dev
+  sudo -E apt-get -y install postgresql postgresql-server-dev-all postgresql-contrib libpq-dev
 
 log_info "Installing curl ..."
-  sudo apt-get -y install curl
+  sudo -E apt-get -y install curl
 
 log_info "Installing Redis ..."
   curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
   echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
-  sudo apt-get update
-  sudo apt-get -y install redis
+  sudo -E apt-get update
+  sudo -E apt-get -y install redis
 
 log_info "Installing ImageMagick ..."
-  sudo apt-get -y install libtool
+  sudo -E apt-get -y install libtool
   wget https://raw.githubusercontent.com/discourse/discourse_docker/main/image/base/install-imagemagick
   chmod +x install-imagemagick
   sudo -E ./install-imagemagick
 
 log_info "Installing image utilities ..."
-  sudo apt-get -y install advancecomp gifsicle jpegoptim libjpeg-progs optipng pngcrush pngquant
-  sudo apt-get -y install jhead
+  sudo -E apt-get -y install advancecomp gifsicle jpegoptim libjpeg-progs optipng pngcrush pngquant
+  sudo -E apt-get -y install jhead
 
 if [[ ! -d "$HOME/.rbenv" ]]; then
   log_info "Installing rbenv ..."
@@ -91,7 +95,7 @@ log_info "Installing MailHog ..."
   sudo chmod +x /usr/bin/mailhog
 
 log_info "Installing Node.js 16 ..."
-  curl -sL https://deb.nodesource.com/setup_16.x | sudo bash -
-  sudo apt-get -y install nodejs
+  curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+  sudo -E apt-get -y install nodejs
   sudo npm install -g svgo
   sudo npm install -g yarn
