@@ -34,6 +34,7 @@ log_info "Installing sqlite3 ..."
 
 log_info "Installing Postgres ..."
   sudo -E apt-get -y install postgresql postgresql-server-dev-all postgresql-contrib libpq-dev
+  cd /tmp && sudo -u postgres createuser -s "$USER"
 
 log_info "Installing curl ..."
   sudo -E apt-get -y install curl
