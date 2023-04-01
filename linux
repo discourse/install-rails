@@ -39,10 +39,17 @@ log_info "Installing curl ..."
   sudo -E apt-get -y install curl
 
 log_info "Installing Redis ..."
-  curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
-  echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
-  sudo -E apt-get update
-  sudo -E apt-get -y install redis
+  cd /tmp && \
+    wget https://download.redis.io/redis-stable.tar.gz && \
+    tar -xzvf redis-stable.tar.gz && \
+    cd redis-stable && \
+    make && \
+    sudo -E make install
+  cd /tmp && \
+    rm redis-stable.tar.gz && \
+    rm -Rf redis-stable
+
+  redis-server
 
 log_info "Installing ImageMagick ..."
   sudo -E apt-get -y install libtool
