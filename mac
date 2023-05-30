@@ -9,6 +9,7 @@ create_zshrc_and_set_it_as_shell_file() {
     touch "$HOME/.zshrc"
   fi
   shell_file="$HOME/.zshrc"
+  shell_profile="$HOME/.zprofile"
 }
 
 create_bashrc_and_set_it_as_shell_file() {
@@ -16,6 +17,7 @@ create_bashrc_and_set_it_as_shell_file() {
     touch "$HOME/.bashrc"
   fi
   shell_file="$HOME/.bashrc"
+  shell_profile="$HOME/.bash_profile"
 }
 
 case "$SHELL" in
@@ -34,6 +36,8 @@ log_info() {
 if ! command -v brew &>/dev/null; then
   log_info "Installing Homebrew, a good OS X package manager ..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $shell_profile
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 else
   log_info "Homebrew already installed. Skipping ..."
 fi
@@ -49,6 +53,9 @@ log_info "Installing Postgres, a good open source relational database ..."
 
 log_info "Starting Postgres ..."
   brew services start postgresql@13
+
+log_info "Adding Postgres to PATH ..."
+echo 'export PATH="/opt/homebrew/opt/postgresql@13/bin:$PATH"' >> ~/.zshrc
 
 log_info "Installing Redis, a good key-value database ..."
   brew install redis
@@ -109,6 +116,9 @@ log_info "Installing Rails ..."
 
 log_info "Installing MailHog ..."
   brew install mailhog
+
+log_info "Installing Node ..."
+  brew install node
 
 log_info "Installing Yarn ..."
   brew install yarn
