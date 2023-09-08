@@ -51,21 +51,46 @@ log_info "Installing Redis ..."
     rm -Rf redis-stable
 
   sudo adduser --system --group --no-create-home redis
-  sudo cat > /etc/systemd/system/redis-server.service <<EOL
-[Unit]
-Description=Redis In-Memory Data Store
-After=network.target
+  if [ ! -f "/etc/systemd/system/redis-server.service"]; then
+    sudo cat > /etc/systemd/system/redis-server.service <<EOF
+[unit]
+description=redis in-memory data store
+after=network.target
 
-[Service]
-User=redis
-Group=redis
-ExecStart=/usr/local/bin/redis-server
-ExecStop=/usr/local/bin/redis-cli shutdown
-Restart=always
+[service]
+user=redis
+group=redis
+execstart=/usr/local/bin/redis-server /etc/redis/redis.conf
+execstop=/usr/local/bin/redis-cli shutdown
+restart=always
 
-[Install]
-WantedBy=multi-user.target
-EOL
+[install]
+wantedby=multi-user.target
+EOF
+  fi
+
+  sudo mkdir -p /var/log/redis /var/lib/redis /etc/redis
+  sudo chown redis:redis /var/log/redis /var/lib/redis /etc/redis
+  sudo chmod 755 /var/log/redis /var/lib/redis /etc/redis
+
+  FILE="/etc/redis/redis.conf"
+
+  if [ ! -f "$FILE" ]; then
+    sudo bash -c "cat > $FILE" <<EOF
+bind 0.0.0.0
+protected-mode no
+port 6379
+dir /var/lib/redis
+dbfilename dump.rdb
+save 900 1
+save 300 10
+save 60 10000
+logfile /var/log/redis/redis-server.log
+loglevel debug
+EOF
+    sudo chown redis:redis "$FILE"
+    sudo chmod 644 "$FILE"
+  fi
 
   sudo systemctl daemon-reload
   sudo systemctl enable redis-server
