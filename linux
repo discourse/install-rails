@@ -77,7 +77,7 @@ EOF
 
   if [ ! -f "$FILE" ]; then
     sudo bash -c "cat > $FILE" <<EOF
-bind 0.0.0.0
+bind 127.0.0.1
 protected-mode no
 port 6379
 dir /var/lib/redis
