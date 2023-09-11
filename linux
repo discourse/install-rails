@@ -50,7 +50,53 @@ log_info "Installing Redis ..."
     rm redis-stable.tar.gz && \
     rm -Rf redis-stable
 
-  redis-server --daemonize yes
+  sudo adduser --system --group --no-create-home redis
+  if [ ! -f "/etc/systemd/system/redis-server.service"]; then
+    sudo cat > /etc/systemd/system/redis-server.service <<EOF
+[unit]
+description=redis in-memory data store
+after=network.target
+
+[service]
+user=redis
+group=redis
+execstart=/usr/local/bin/redis-server /etc/redis/redis.conf
+execstop=/usr/local/bin/redis-cli shutdown
+restart=always
+
+[install]
+wantedby=multi-user.target
+EOF
+  fi
+
+  sudo mkdir -p /var/log/redis /var/lib/redis /etc/redis
+  sudo chown redis:redis /var/log/redis /var/lib/redis /etc/redis
+  sudo chmod 755 /var/log/redis /var/lib/redis /etc/redis
+
+  FILE="/etc/redis/redis.conf"
+
+  if [ ! -f "$FILE" ]; then
+    sudo bash -c "cat > $FILE" <<EOF
+bind 127.0.0.1
+protected-mode no
+port 6379
+dir /var/lib/redis
+dbfilename dump.rdb
+save 900 1
+save 300 10
+save 60 10000
+logfile /var/log/redis/redis-server.log
+loglevel debug
+EOF
+    sudo chown redis:redis "$FILE"
+    sudo chmod 644 "$FILE"
+  fi
+
+  sudo systemctl daemon-reload
+  sudo systemctl enable redis-server
+  sudo systemctl start redis-server
+  sudo systemctl status redis-server
+  sudo redis-cli ping
 
 log_info "Installing ImageMagick ..."
   sudo -E apt-get -y install libtool
