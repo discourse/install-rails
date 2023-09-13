@@ -51,7 +51,7 @@ log_info "Installing Redis ..."
     rm -Rf redis-stable
 
   sudo adduser --system --group --no-create-home redis
-  if [ ! -f "/etc/systemd/system/redis-server.service"]; then
+  if [ ! -f "/etc/systemd/system/redis-server.service" ]; then
     sudo cat > /etc/systemd/system/redis-server.service <<EOF
 [unit]
 description=redis in-memory data store
