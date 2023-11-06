@@ -160,7 +160,5 @@ log_info "Installing MailHog ..."
   sudo chmod +x /usr/bin/mailhog
 
 log_info "Installing Node.js 18 ..."
-  curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-  sudo -E apt-get -y install nodejs
-  sudo npm install -g svgo
-  sudo npm install -g yarn
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+  source ~/.bashrc &&  nvm install 18
