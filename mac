@@ -120,5 +120,5 @@ log_info "Installing MailHog ..."
 log_info "Installing Node ..."
   brew install node
 
-log_info "Installing Yarn ..."
-  brew install yarn
+log_info "Installing pnpm ..."
+  npm install -g pnpm
