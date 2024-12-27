@@ -54,7 +54,10 @@ log_info "Starting Postgres ..."
   brew services start postgresql@13
 
 log_info "Adding Postgres to PATH ..."
-echo 'export PATH="/opt/homebrew/opt/postgresql@13/bin:$PATH"' >> ~/.zshrc
+echo 'export PATH="/opt/homebrew/opt/postgresql@13/bin:$PATH"' >> $shell_file
+echo 'export PATH="/opt/homebrew/opt/libpq/bin:$PATH"' >> $shell_file
+export PATH="/opt/homebrew/opt/postgresql@13/bin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 log_info "Installing Redis, a good key-value database ..."
   brew install redis
