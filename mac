@@ -36,7 +36,6 @@ log_info() {
 if ! command -v brew &>/dev/null; then
   log_info "Installing Homebrew, a good OS X package manager ..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $shell_profile
   eval "$(/opt/homebrew/bin/brew shellenv)"
 else
   log_info "Homebrew already installed. Skipping ..."
@@ -49,7 +48,7 @@ log_info "Installing Homebrew Services"
   brew tap homebrew/services
 
 log_info "Installing Postgres, a good open source relational database ..."
-  brew install postgresql@13
+  brew install postgresql@13 libpq
 
 log_info "Starting Postgres ..."
   brew services start postgresql@13
@@ -69,23 +68,16 @@ log_info "Installing and linking ImageMagick, to crop and resize images ..."
 log_info "Installing rbenv, to change Ruby versions ..."
   brew install rbenv
 
-  if ! grep -qs "rbenv init" $shell_file; then
-    printf '\n# load rbenv\n' >> $shell_file
-    printf 'export PATH="$HOME/.rbenv/bin:$PATH"\n' >> $shell_file
-    printf 'eval "$(rbenv init - --no-rehash)"\n' >> $shell_file
-
-    log_info "Enable shims and autocompletion ..."
-      eval "$(rbenv init -)"
+  if ! command -v rbenv &>/dev/null; then
+    rbenv init
+    eval "$(rbenv init -)"
   fi
-
-  export PATH="$HOME/.rbenv/bin:$PATH"
 
 log_info "Installing ruby-build, to install Rubies ..."
   brew install ruby-build
 
-log_info "Upgrading and linking OpenSSL ..."
-  brew install openssl@1.1
-  brew link openssl@1.1 --force
+log_info "Upgrading OpenSSL ..."
+  brew install openssl
 
 log_info "Installing image libs ..."
   brew install advancecomp jhead jpegoptim jpeg optipng oxipng pngcrush pngquant
