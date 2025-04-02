@@ -44,9 +44,6 @@ fi
 log_info "Updating Homebrew formulas ..."
   brew update
 
-log_info "Installing Homebrew Services"
-  brew tap homebrew/services
-
 log_info "Installing Postgres, a good open source relational database ..."
   brew install postgresql@13 libpq
 
