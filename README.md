@@ -1,3 +1,8 @@
+NOTICE: These scripts have been deprecated. Please see the following development installation guides:
+- [Install Discourse on macOS](https://meta.discourse.org/t/install-discourse-on-macos-for-development/15772)
+- [Install Discourse on Ubuntu](https://meta.discourse.org/t/install-discourse-on-ubuntu-or-debian-for-development/14727)
+- [Install Discourse on Windows](https://meta.discourse.org/t/install-discourse-on-windows-for-development/75149)
+
 Install Rails
 ======
 
